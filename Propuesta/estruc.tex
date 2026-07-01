@@ -1,0 +1,242 @@
+%!TEX root = ./main.tex
+\begin{definition}
+   Sea $M$ una 3-variedad, decimos que $M$ tiene una estructura hiperbólica si para cada punto $x\in M$ existe una vecindad $U$ isometrica a una bola abierta en $\bb{H}^3$. Ademas decimos que esta estructura es completa, si la métrica inducida antes en $M$ es completa.
+\end{definition}
+
+A lo largo del curso hemos visto como las herramientas de cortado y pegado son nuestras grandes aliadas en ámbitos topológicos, esto es lo que nos permite visualizar de una manera diferente diferentes superficies por medio de identificaciones de polígonos, en nuestro caso mas estándar cuadrados. Ya hemos visto que nuestro complemento de nudos se puede descomponer en poliedros ideales, pero no necesariamente estos poliedros son los que queremos como descompocision sino que queremos el tipo de poliedro mas básico, los tetraedros
+\begin{definition}
+    Sea $M$ una 3-variedad, una triangulación topológica ideal de $M$ es una manera combinatoria de pegar tetraedros truncados (tetraedros ideales) tal que el resultado es homeomorfo a $M$, las partes truncadas corresponderán a la frontera de $M$. 
+\end{definition}
+
+Recordemos que previamente ya teníamos una descompocision así para el caso del nudo de 8, pero en nuestros otros dos ejemplos no tenemos algo así, mas posteriormente veremos que dada la descompocision en poliedros, no es difícil llegar a la de tetraedros. 
+
+\begin{definition}
+    Una triangulación ideal geométrica de $M$ es una triangulación topológica ideal donde cada tetraedro tiene una estructura hiperbólica positivamente orientada, y que el resultado de el pegado de justamente una variedad suave con una métrica completa.
+\end{definition}
+
+Así consideremos un tetraedro ideal cualquiera de una descompocision $T$, este podemos verlo embebido en $\bb{H}^3$, este tetraedro tiene 6 aristas sin preocuparnos por la identificación, si fijamos una $e$ podemos tomas una isometria que lleve los vértices ideales de la arista a $0$ y $\infty$, y un tercer vértice ideal a 1, recordemos que esta elección de tres puntos determina una única isometria, por lo que el cuarto vértice ideal es enviado a algún punto $z^\prime\in\bb{C}$, Observe que podemos asumir que este tiene parte imaginaria positiva, si no aplique la isometria que actuá sobre $\partial\bb{H}^3$ por medio de $z\mapsto \dfrac{z}{z^\prime}$, note que esta fija a $0$ y $\infty$, enviá a $z^\prime$ a $1$, y por ultimo a 1 lo enviá a un complejo con parte imaginaria positiva.
+
+\begin{definition}
+    Dada la convención anterior, defina el invariante de arista $e$, $z(e)\in\bb{C}$, como el numero complejo con parte imaginaria positiva obtenida de aplicar la isometria única de $\bb{H}^3$ construida antes.
+\end{definition}
+
+\begin{note}
+    Es posible que este ultimo vértice se repita con alguno de los primeros, es decir $0,1,\infty$, en dado caso decimos que el tetraedro es degenerado, si se asigna a la recta real pero no a los puntos mencionados anteriormente decimos que es plano. en ninguno de los dos casos no podremos asignar la estructura hiperbólica deseada.
+\end{note}
+Observe que a partir de un tetraedro ideal ya ubicado uno podría cambiar los vértices ideales entre si para así obtener invariantes de aristas para las otras aristas del tetraedro, el siguiente lema muestra como se relacionan
+\begin{lemma}
+    Sea $T$ un tetraedro ideal con arista $e_1$, tal que su imagen a través de la isometria enviá los vértices de $T$ a $\infty,0,1$ y $z(e_1)$, tal que la imagen de $e_1$, se encuentra entre los vértices 0 y $\infty$, luego $T$ tiene los siguiente invariantes de aristas
+    \begin{itemize}
+        \item Si $e^\prime_1$ es la arista con 1 y $z(e_1)$, tenemos que $z(e^\prime_1)=z(e_1)$.
+        \item La arista $e_2$ con vertices en $\infty$ y 1 su invariante es $z(e_2)=\dfrac{1}{1-z(e_1)}$. 
+        \item La arista $e_3$ con vertices $\infty$ y $z(e_1)$ su invariante es $z(e_3)=\dfrac{z(e_1)-1}{z(e_1)}.$
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    Basta en cada caso tomar una isometria que mande los puntos finales de cada arista a la geodésica de $0$ a $\infty$ y mirar la imagen del punto restante. Por facilidad en la notación $z=z(e_1).$ 
+    \begin{itemize}
+        \item Si queremos mandar $1\mapsto 0$,  $z\mapsto\infty$ y $0\mapsto 1$ esto nos determina la transformación en la frontera $w\mapsto \dfrac{zw-z}{w-z}$, el punto $\infty$ lo enviá nuevamente a $z$ por lo que $z(e_1^\prime)=z.$
+        \item Como ya $\infty$ esta fijo en nuestra arista queremos entonces enviar $1\mapsto 0$ y $z\mapsto 1$, esto nos determina la transformación $w\mapsto\dfrac{w-1}{z-1}$, así  $0\mapsto\dfrac{1}{1-z}$, por lo que $z(e_2)=\dfrac{1}{1-z}.$
+        \item De manera similar fijando el infinito, y llevando $z\mapsto 0$ y $0\mapsto 1$ tenemos $w\mapsto\dfrac{w-z}{-z}$, así $1\mapsto \dfrac{z-1}{z}$, es decir $z(e_3)=\dfrac{z-1}{z}$
+    \end{itemize}
+\end{proof}
+Observe que el hecho de que los demás invariantes dependan de solo uno a simple vista parece útil ya que quita la dependencia de la elección de la arista inicial. Veamos ahora como pegar los tetraedros. Concentrémonos en una arista $e$ identificada y fijemos esta como nuestro punto de partida. Sea $T_1$ el primer tetraedro con arista $e_1$ pegada a $e$, donde colocamos a la arista $e_1$ de $0$ a $\infty$, con un tercer vértice en uno y el cuarto en $z(e_1)$, luego sea $T_2$ el siguiente tetraedro con arista $e_2$, al pegarla a $e_1$, se pegara una cara $F_1$ de $T_1$ con vértices $0,z(e_1)$ y $\infty$ a una cara $F_2$, este nuevo tetraedro lo embebemos en primera instancia de la manera estándar con la cara $F_2$ en los vértices $0,\infty$ y $1$ y posterior con la isometria $w\mapsto z(e_1)w$ fijamos al $0$ y $\infty$, enviamos 1 a $z(e_1)$ y por tanto el vértice restante de $T_2$, $z(e_2)$ es enviado a $z(e_1)z(e_2)$, siguiendo este proceso iterativa mente en sentido antihorario de pegado tendremos algo como en la siguiente figura
+\begin{figure}[H]
+\centering
+\input{tripega}
+    \caption{Vertices de triangulos pegados}
+\end{figure}
+Observe que cada vez multiplicamos el invariante y dependiendo del angulo entre las caras del tetraedro se ira sumando un angulo diferente que en particular queremos que coincida con dar una vuelta completa, esta intuición justifica el siguiente teorema
+\begin{theorem}
+    Sea $M$ una 3-variedad que admite una triangulación topológica ideal tal que cada tetraedro tiene una estructura hiperbólica. La estructura hiperbólica en los tetraedros induce una estructura hiperbólica en el pegado si y solo si para cada arista $e$ tenemos que 
+    $$\prod z(e_i)=1\quad\text{y}\quad\sum\arg z(e_i)=2\pi.$$
+\end{theorem}
+En primera instancia podríamos pensar que tenemos muchas variables, pero como todos los invariantes de aristas dependen de uno solo por el lema 4.1, cada tetraedro aporta a lo mas una variable. Con esta ecuación dotemos a nuestro ejemplo principal.
+\begin{eg}
+    Recordemos la descompocision en dos tetraedros ideales que ya teníamos del nudo de $8$
+    \begin{figure}[H]
+    \centering
+    \input{tetra8ari}
+        \caption{tetraedros ideales del nudo de 8 con invariantes de aristas}
+    \end{figure}
+    Observe que por ser mas consistentes cambiamos la vista del poliedro de arriba a la parte exterior, lo que ocasiona una reflexión en el diagrama obtenido antes, ademas observe que a cada arista la hemos dotado de un numero complejo $z_i$ y $w_i$, justamente este es el invariante de arista asociado a enviar esa arista a la arista que va de $0$ a $\infty$, note que por el primer ítem del lema 4.1 solo se necesitan tres indices en primera instancia. Así para cada arista tenemos respectivamente
+    $$z_1^2z_3w_1^2w_3=1\quad\text{y}\quad z_2^2z_3w_2^2w_3=1.$$
+    Observe que podemos simplificar aun mas usando los otros dos ítems, si $z_1=z$ y $w_1=w$, tenemos que las ecuaciones se convierten en
+    $$z^2\frac{z-1}{z}w^2\frac{w-1}{w}=1\quad\text{y}\quad \frac{1}{(1-z)^2}\frac{z-1}{z}\frac{1}{(1-w)^2}\frac{w-1}{w}=1,$$
+    Observe que en ambos casos esto se reduce a la única ecuación
+    $$z(z-1)w(w-1)=1,$$
+    por lo que si solucionamos la ecuación cuadrática en términos de $z$ las soluciones son
+    $$z=\frac{1\pm\sqrt{1+\dfrac{4}{w(w-1)}}}{2},$$
+    Esto nos determina las soluciones condicionadas netamente a $w$, primero recordemos que $w$ tiene parte imaginaria positiva por hipótesis, queremos de manera similar que $z$ tenga parte imaginaria positiva, esto se consigue siempre que $1+\dfrac{4}{w(w-1)}$ no sea un numero real positivo. Primero observe que es un numero real positivo si $\Im(w(w-1))= 0$, de aquí uno concluye que $\Re(w)=\dfrac{1}{2}$, y segundo necesitaríamos que $1+\dfrac{4}{w(w-1)}>0$, luego de algunas simplificaciones usando la condición anterior se llega a la cuadrática $4y^2-15>0$, donde $y=\Im(w)$, de ahí se concluye que $\Im(w)>\dfrac{\sqrt{15}}{2}$, por lo que nuestro conjunto de soluciones para $w$ que nos dan que $z$ tiene parte imaginaria positiva y dotan del pegado de una estructura hiperbólica es
+    $$\bb{H}^2\setminus\left\{w\in\bb{C}:\Re(w)=\frac{1}{2}\quad\text{y}\quad \Im(w)>\frac{\sqrt{15}}{2}\right\}$$ 
+\end{eg}
+
+\subsection{Ecuaciones de Completez}
+Antes solo observábamos el complemento del nudo, mas ahora la idea sera observar el exterior del nudo, ya que esto genera una frontera toroidal a la tres variedad y ademas la volverá compacta,, y es importante considerar estas cúspides para entender si hay una estructura hiperbólica completa.
+\begin{definition}
+    Sea $M$ una 3-variedad con frontera toroidal, definimos una cúspide de $M$, como una vecindad de la frontera que es homeomorfa a $T^2\times [0,\infty]$
+\end{definition}
+
+En un principio no resulta tan claro el como encontrar estas cúspides, mas en el caso de nuestra descompocision se pueden llegar a entender de una mejor manera
+
+\begin{definition}
+    Sea $M$ una 3-variedad que admite una triangulación topológica ideal, si truncamos los vértices de cada tetraedro ideal se obtiene una colección de triángulos, donde cada uno  se encuentra en la frontera de una cúspide, las aristas de cada triangulo adquieren un pegado natural dado por las caras del tetraedro. Esto nos da una triangulación de cada frontera toroidal. Que llamamos una triangulación de cúspide
+\end{definition}
+
+\begin{eg}
+    Si truncamos los vértices de nuestra triangulación del complemento del nudo de $8$ obtenemos los siguientes triángulos ya pegados que justamente nos dan la identificación del toro
+    \begin{figure}[H]
+    \centering
+    \input{tetra8tri}
+        \caption{Triangulación de la cuspide}
+    
+    \end{figure}
+\end{eg}
+
+Necesitamos de estas cúspides para el siguiente teorema que nos habla acerca de la completez de nuestra estructura inducida
+
+\begin{theorem}
+    Sea $M$ una 3-variedad con frontera toroidal y una estructura hiperbólica, esta estructura es completa en $M$ si y solo si la estructura inducida en cada frontera de una cúspide es una estructura euclidea sobre el toro.
+\end{theorem}
+
+Esto quiere decir que en el momento del pegado solo basta por preocuparnos por que la estructura hiperbólica del complemento de nuestro nudo, induzca una estructura euclidea en la triangulación de la cúspide, la pregunta es como podemos asegurar esto.
+
+\begin{definition}
+    Suponga que la 3-variedad $M$ posee una triangulación topológica ideal, y sea $T$ la frontera toroidal de una cuspide de $M$, sea $[\alpha]\in\pi_1(T)$, asociamos el numero $H(\alpha)$ de la siguiente manera. Dotando a $\alpha$ de una orientación, este por homotopia puede ser colocado de tal manera que en cada triangulo solo separe una esquina una vez, donde cada vértice esta dotado de un invariante de arista $z_i$, y como tiene orientación se puede determinar si esta a la izquierda o la derecha, esto lo determinaremos con una potencia $\epsilon_i=\pm 1$, positivo si esta a la izquierda y negativo en otro caso. Así 
+    $$H(\alpha)=\prod_{i=1}^n z_i^{\epsilon_i},$$
+\end{definition}
+Tan extraño y misterioso como puede parecer este numero nos permite determinar cuando nuestra estructura hiperbólica es completa
+\begin{theorem}
+    Sea $T$ la frontera toroidal de una cúspide de $M$, donde $M$ admite una triangulación topológica ideal y los tetraedros ideales admiten una estructura hiperbólica que satisface las ecuaciones de pegado. Sean $\alpha$ y $\beta$ curvas que generan $\pi_1(T)$, si $H(\alpha)=H(\beta)=1$ entonces la triangulación es una triangulación ideal geométrica.
+\end{theorem}
+
+En estos últimos dos conceptos no se ahondo en sus justificaciones debido a que estas requieren herramientas de holonomia y funciones de de desarrollo, las cuales se salen un poco del propósito de este proyecto. Con esta herramienta que llamaremos ecuaciones de completez descubramos para que invariantes de arista el complemento del nudo de 8 posee una estructura hiperbólica completa
+
+\begin{eg}
+    Observe primero que dada la triangulación anterior basta con tomar las siguientes dos curvas que claramente generan el grupo fundamental
+    \begin{figure}[H]
+    \centering
+    \input{Curvas8}
+        \caption{Curvas $\alpha$ y $\beta$}
+    \end{figure}
+    Luego por la descripción dada antes $$H(\alpha)=z_3w_2^{-1}z_2w_3^{-1}z_3w_2^{-1}z_2w_3^{-1}=\left(\dfrac{z_2z_3}{w_2w_3}\right)^2$$, y $$H(\beta)=z_2^{-1}w_1=\dfrac{w_1}{z_2}$$
+    Siguiendo el lema 4.1 si el invariante de arista $z_1=z$ y $w_1=w$  obtenemos que 
+    $$H(\alpha)=\left(\frac{1}{1-z}\cdot\frac{z-1}{z}\cdot(1-w)\cdot\frac{w}{w-1}\right)^2=\frac{w^2}{z^2},$$
+    y ademas $H(\beta)=w(1-z)$, por las ecuaciones de completez, como $H(\alpha)=1$, tenemos que $w^2=z^2$, luego $(w-z)(w+z)=0$, pero como $w$ y $z$ tienen parte imaginaria positiva el segundo factor no puede ser 0, luego $w=z$, sustituyendo esto en $H(\beta)=1$, obtenemos que $z^2-z+1=0$, luego la única posibilidad es que
+    $$w=z=\frac{1}{2}+i\frac{\sqrt{3}}{2}$$
+    el cual es justamente un punto de los puntos que si dotan de estructura hiperbólica, esto nos dice que todos los demás pegados no tienen estructura hiperbólica completa.
+\end{eg}
+
+\subsection{Ecuaciones de pegado para el nudo $6_1$}
+
+Recordemos que antes ya habíamos hecho la descompocision del nudo $6_1$ en dos poliedros ideales los cuales si bien no son tetraedros, la forma en que están proyectados se asemeja mucho a unos, por lo que es natural preguntarse de que forma podemos convertir estos en tetraedros ideales, la idea sera tomar un vértices de uno de los poliedros en las caras que no son triángulos y luego conectar este con aquellos vértices con los que no tenga aristas, para subdividir la cara en triángulos, entonces dadas las proyecciones obtenidas previamente tenemos las siguientes subdivisiones
+\begin{figure}[H]
+\centering
+\input{nudo61divC}
+    \caption{Subdivisión de caras $C$ y $D$}
+\end{figure}
+Recuerde que el pegado de las caras se hace de tal forma que las aristas coincidan por lo que una subdivisión de las caras $C$ y $D$ en un poliedro ideal ya dotan de una división al otro poliedro ideal. Ahora observe que hay secciones que poseen tres triangulo en cada poliedro, si cortamos estas regiones y asignamos una cara a la parte recortada por identificación, obtenemos precisamente tetraedros, esta subdivisión se hace tomando las regiones $D_3,B,C_3$ para uno y $C_1,A,D_1$, en el caso del poliedro de arriba y nombrando aquellas nuevas caras como $E_1$ y $E_2$ respectivamente
+\begin{figure}[H]
+\centering
+\input{nudo61arri}
+    \caption{Subdivisión en tres tetraedros del poliedro de arriba}
+\end{figure}
+De una manera similar podemos hacer una subdivisión del poliedro de abajo como se muestra a continuación
+\begin{figure}[H]
+\centering
+\input{nudo61aba}
+    \caption{Subdivisión del poliedro de abajo}
+\end{figure}
+Observe particularmente que el poliedro de la derecha del todo no es exactamente un tetraedro, ya que la unión de las caras $E_4$ y $D_2$ forman un digono y no un cuadrilátero, como pasaría en un tetraedro, Por lo que si identificamos 0 con 7, cuando hacemos esto las caras $E_4$ y $D_2$ se identifican entre si, lo mismo ocurre con $E_3$ y $D_3$, por lo que esto no es otra cosa que el grafo de un triangulo sobre la 3-bola, por lo que en el pegado no tienen incidencia, así nuestra triangulación topológica ideal del complemento del nudo $6_1$ la podemos ver como el pegado de los siguientes 5 tetraedros todos vistos ahora desde afuera.
+\begin{figure}[H]
+\centering
+\input{nudo61tetra}
+    \caption{Triangulación topológica ideal del nudo $6_1$}
+\end{figure}
+Con esto ya podemos empezar a pensar primero en ecuaciones de pegado, Observe que dotamos a cada tetraedro de variables $z_i,w_i,u_i,s_i$ y $t_i$, con $i=1,2,3$, al igual que en el caso del nudo de ocho primero solo mantenemos el invariante de arista para aristas opuestas, la ecuaciones de pegado por arista son
+\begin{itemize}
+    \item \textbf{Arista 1:} $z_2z_3w_3u_2u_3s_2^2s_3=1.$
+    \item \textbf{Arista 4:} $z_1z_3w_3u_1u_3s_1^2t_1t_3^2=1.$
+    \item \textbf{Arista 7:} $z_1w_2^2u_1s_3t_1=1.$
+    \item \textbf{Arista 8:} $z_2w_1t_2=1.$
+    \item \textbf{Arista 9:} $w_1u_2t_2=1.$
+\end{itemize}
+Haciendo las sustituciones $z_1=z,w_1=w,u_1=u,s_1=s$ y $t_1=t$ y usando el lema 4.1 obtenemos el siguiente sistema de ecuaciones no lineal
+$$\begin{cases}
+    \dfrac{1-w}{zu(1-s)sw}=1\\
+    \\
+    \dfrac{(z-1)(w-1)(u-1)s^2(t-1)^2}{wt}=1\\
+    \\
+    \dfrac{zu(s-1)t}{(1-w)^2s}=1\\
+    \\
+    \dfrac{w}{(1-z)(1-t)}=1\\
+    \\
+    \dfrac{w}{(1-u)(1-t)}=1
+\end{cases}$$
+Algunas condiciones son fáciles de deducir, como por ejemplo que $z=u$, pero resolver este sistema e incluso otros sobrepasa la capacidad de calculo en general cuando se trata de determinar la parametrizacion de soluciones, por lo que  en general lo mejor es usar software para solucionar. Cuando se trata de las ecuaciones de completez pasa algo incluso mas complicado y es al momento de truncar los tetraedros en este caso se generan 20 triángulos que se necesitan pegar de manera adecuada siguiendo las identificaciones de las caras, mas esta tarea se salio de mis manos y entra en juego la ayuda de herramientas computacionales.
+
+\subsection{Ecuaciones de pegado y completes para el enlace de Whitehead}
+
+Al igual que antes ya teníamos dos poliedros ideales (pirámides) que reflejaban el complemento del enlace de Whitehead, en este caso la división en tetraedros es casi inmediata, pero seguiremos la idea del anterior ejemplo por consistencia. Primero dividimos en ambos poliedros la cara $G$ por medio de una arista extra
+\begin{figure}[H]
+\centering
+\input{whiteheaddivg}
+    \caption{División cara $G$ en los poliedros}
+\end{figure}
+Nuevamente es incluso mas facil que antes, basta con que en el poliedro de arriba se separen las caras $B,D,G_1$ del diagrama y se agregue una nueva cara $H_1$ y similarmente en el de abajo separar $C,D,G_2$ y agregar una nueva cara $H_2$ como se muestra a continuación
+\begin{figure}[H]
+\centering
+\input{whiteheadsep}
+    \caption{Poliedros divididos, arriba a la izquierda y abajo a la derecha}
+\end{figure}
+Reorganizando las aristas para obtener el dibujo estándar y cambiando la vista del poliedro de arriba al exterior, obtenemos la triangulación topológica ideal
+\begin{figure}[H]
+\centering
+\input{whiteheadtetra}
+    \caption{Triangulación topológica ideal de el enlace de Whitehead}
+\end{figure}
+Observe que como ha sido costumbre ya dotamos de los respectivos invariantes de aristas a los diagramas, dotando a las opuestas por el lema 4.1 de la misma variable, así por las ecuaciones de pegado tenemos que
+\begin{itemize}
+    \item \textbf{Arista 1:} $z_1w_1w_2^2u_1u_2^2t_1=1.$
+    \item \textbf{Arista 2:} $z_3w_3u_3t_3=1.$
+    \item \textbf{Arista 3:} $z_1z_2^2w_1u_1t_1t_2^2=1$
+    \item \textbf{Arista 5:} $z_3w_3u_3t_3=1.$
+\end{itemize}
+Observe que una ecuación se repite, luego por el lema 4.1 y tomando las sustituciones $z_1=z,w_1=w,u_1=u$ y $t_1=t$ obtenemos las ecuaciones de pegado
+$$\begin{cases}
+    \dfrac{zwut}{(1-w)^2(1-u)^2}=1\\
+    \\
+    \dfrac{(z-1)(w-1)(u-1)(t-1)}{zwut}=1\\
+    \\
+    \dfrac{zwut}{(1-z)^2(1-t)^2}=1
+\end{cases}$$
+Nuevamente hay deducciones que se pueden hacer solo mirando las ecuaciones y recordando la condición de la parte imaginaria positiva se puede llegar a que $(w-1)(u-1)=(z-1)(t-1)$, mas avanzar mas es complicado, por lo que haremos uso de las ecuaciones de completez. Para estas note que este es un enlace por lo que como son dos componentes deberíamos obtener dos cúspides y por tanto dos triangulaciones del toro, primero truncamos los vértices y damos nombres a las caras 
+\begin{figure}[H]
+\centering
+\input{whiteheadtrun}
+    \caption{Triangulos en los tetraedros truncados que representan las cuspides}
+\end{figure}
+Pegando de manera adecuada obtenemos dos paralelogramos que nos representan cada frontera de cúspide como se muestra a continuación
+\begin{figure}[H]
+\centering
+\input{whiteheadtri}
+    \caption{Triangulación de las cúspides y curvas generadoras}
+\end{figure}
+Observe que de una vez en cada cúspide trazamos las curvas que generan el grupo fundamental, en rojo $\alpha,\alpha^\prime$ y en azul $\beta,\beta^\prime$. Así el numero asociado a cada curva es
+\begin{itemize}
+    \item $H(\alpha)=z_2t_1z_1^{-1}t_2^{-1}w_2u_1w_1^{-1}u_2^{-1}=\dfrac{z_2t_1w_2u_1}{z_1t_2w_1u_2}.$
+    \item $H(\beta)=z_3^{-1}z_2t_1=\dfrac{z_2t_1}{z_3}.$
+    \item $H(\alpha^\prime)=z_2u_1t_1^{-1}w_2^{-1}u_2z_1w_1^{-1}t_2^{-1}=\dfrac{z_2u_1u_2z_1}{t_1w_2w_1t_2}.$
+    \item $H(\beta^\prime)=z_3^{-1}u_1t_2=\dfrac{u_1t_2}{z_3}$
+\end{itemize}
+Usando las relaciones de de invariantes de aristas obtenemos las ecuaciones de completez que complementan a las de pegado halladas antes
+$$\begin{cases}
+    \dfrac{ut(1-u)(1-t)}{zw(1-z)(1-w)}=1\\
+    \\
+    -\dfrac{zt}{(z-1)^2}=1\\
+    \\
+    \dfrac{uz(1-w)(1-t)}{tw(1-z)(1-u)}=1\\
+    \\
+    \dfrac{uz}{(z-1)(1-t)}=1
+\end{cases}$$
+Nuevamente hallar soluciones a mano seria excesivamente engorroso y para esto es mejor usar herramientas computacionales, pero note que esto nos describe en su totalidad los valores que puede tomar cada invariante de arista, por lo que si uno quisiera unos números en particular basta con remplazar y verificar que todo se cumple.

@@ -1,0 +1,26 @@
+%!TEX root = ./main.tex
+
+Dentro del contexto de los posibles lectores de este documento, todo habremos estado en sintonía con el curso por lo que unos preliminares de teoría de nudos excesivamente extensos resultarían innecesarios, pero por formalidad y el propósito mas geométrico de este trabajo, resulta imperante dejar en claro cual va a ser el conjunto en el que vamos a embeber los nudos para dotarlos de esta geometría.
+
+\begin{definition}
+    Un nudo $K\subset S^3$ es un subconjunto de puntos homeomorfico a $S^1$ bajo un homeomorfismo PL (Lineal a trozos), también podemos pensar en un nudo como un embedimiento PL $K:S^1\to S^3$, y usaremos $K$ para referirnos tanto a la función como a $K(S^1)$.
+\end{definition}
+
+Al igual que siempre este homeomorfismo PL puede ser cambiado por un homeomorfismo suave en el sentido usual y en caso de enlace se define una función de la unión de copias disyuntas de $S^1$, la principal diferencia radica en cambiar $\R^3$ por $S^3$, pensando netamente en los espacios, la única ventaja aparente es el hecho de que el espacio escogido en este documento es compacto, pero mas adelante se vera el por que de esta elección desde un punto de vista geométrico, por el momento continuemos con las nociones usuales.
+
+\begin{definition}
+  Decimos que dos nudos (o enlaces) $K_1$ y $K_2$ son equivalentes si existe una isotopia ambiente, es decir una función $h:S^3\times [0,1]\to S^3$  continua  tal que $h_t:=h(-,t):S^3\to S^3$ es un homeomorfismo para cada $t$ fijo. Ademas $h_0(K_1)=K_1$ y $h_1(K_1)=K_2.$ 
+\end{definition}
+
+Si bien esta definición la volvemos a dar sobre $S^3$, es útil seguir pensando en este espacio como $\R^3\cup\{\infty\}$ al momento de visualizar la isotopia ambiente.
+
+\begin{definition}
+  Para un nudo $K$, denotamos por $N(K)$ una vecindad regular abierta de $K$ en $S^3$. El exterior del nudo es la variedad $S^3\setminus N(K)$ y el complemento del nudo es $S^3\setminus K.$
+\end{definition}
+A partir de estas tres definiciones incluidas en una sola debemos hacer varios comentarios. El primero de ellos es que  que tanto la vecindad como el exterior son 3-variedades, donde la primera es abierta por definición, mientras la segunda al ser el complemento de un abierto, es cerrada, y al ser $S^3$ compacto, es compacta (uno de los beneficios de estar en $S^3$).\\
+
+Si bien no es inmediato, la frontera del exterior del nudo, es homeomorfa a un toro, esto es mas claro si pensamos en un tubo donde el nudo fluye por dentro. Normalmente en vez de vecindad regular se habla directamente de vecindad tubular.\\
+
+Por ultimo para el caso de enlaces se toma unión disyunta de vecindades tubulares adecuadas para cada componente y definimos las mismas nociones.
+
+Como siempre el propósito principal es clasificar y poder distinguir nudos (enlaces) entre si, para esto Thurston \cite{thurston_3d_geometry_topology} desarrollo invariantes con herramientas de la geometría hiperbólica, pero para poder si quiera entender un poco de ello tenemos que ver un poco de la misma.

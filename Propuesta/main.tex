@@ -2,13 +2,11 @@
 \usepackage{float}
 \usepackage{xcolor}
 \usepackage{newpxtext,euler}
-\usepackage[OT1]{fontenc}
+\usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
 \usepackage{amsfonts,amsmath,amssymb,amsthm}
 \usepackage{hyperref}
 \usepackage{geometry}
-\usepackage{bm} % for \bm
-\usepackage{fixmath}
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
@@ -48,19 +46,72 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-    Abordaremos un primer acercamiento a la teoría hiperbólica de nudos, abordaremos las bases de esta teoría y de la geometría hiperbólica enfocándonos en particular en el la estructura hiperbólica del complemento del 8-Nudo respecto a $S^3$ y de su construcción \textcolor{blue}{Dependiendo de mi avance en el semestre agregare la construcción de algún otro nudo hiperbólico o iré mas allá en la teoría hiperbólica de nudos}
+    Abordaremos un primer acercamiento a la teoría hiperbólica de nudos, las bases de esta teoría y de la geometría hiperbólica enfocándonos en particular en el la estructura hiperbólica del complemento del 8-Nudo respecto a $S^3$ y de su construcción, incluyendo los ejemplos del nudo $6_1$ y del enlace de Whitehead que no son estándar encontrarlos hechos y un breve comentario acerca de la conjetura del volumen.
 \end{abstract}
 \section{Introducción}
     La primera vez que uno cruza caminos con el concepto de nudo, muy ocasionalmente no es desde el ámbito formal matemático al que la mayoría de los posibles lectores de este proyecto estén acostumbrados, sino es desde el ámbito mas geométrico y tangible, curiosamente al pasar al formalismo pareciera que toda la intuición geométrica usual para trabajar con ellos resulta inefectiva y las herramientas que se desarrollan se alejan de la misma y pasan a ser topológicas y algebraicas.\\
 
-    La idea de este proyecto sera reencontrarnos con la geometría, en particular con la geometría hiperbólica, por lo que en primera instancia exploraremos los conceptos básicos necesarios de teoría de nudos y de la geometría hiperbólica, para posteriormente estudiar la construcción de Thurston del complemento del 8-Nudo sobre $S^3$ y la generalización de esta para cualquier nudo.\\
+    La idea de este proyecto sera reencontrarnos con la geometría, en particular con la geometría hiperbólica, por lo que en primera instancia exploraremos los conceptos básicos necesarios de teoría de nudos y de la geometría hiperbólica, para posteriormente estudiar la construcción de Thurston del complemento del 8-Nudo sobre $S^3$ y algunos ejemplos adicionales mas comentarios acerca de un proceso general.\\
 
-    Por el trabajo de Thurston un complemento de nudo tiene una de tres formas: o bien es un nudo toroidal, que puede dibujarse como una curva incrustada en un toro de Heegaard en $S^3$, o bien es un nudo satélite, que se encuentra en una vecindad tubular de otro nudo, o bien es hiperbólico, curiosamente esta ultima clase de nudos es la que contiene la mayor cantidad de ejemplos y ademas es de la cual se entiende menos su estructura.
-    \textcolor{blue}{Aun en construcción ira variando con el avance del documento}
+    Por el trabajo de Thurston un complemento de nudo tiene una de tres formas: o bien es un nudo toroidal, que puede dibujarse como una curva incrustada en un toro de Heegaard en $S^3$, o bien es un nudo satélite, que se encuentra en una vecindad tubular de otro nudo, o bien es hiperbólico, curiosamente esta ultima clase de nudos es la que contiene la mayor cantidad de ejemplos y ademas es de la cual se entiende menos su estructura. Estudiaremos como se dota al complemento de un nudo de estructura hiperbólica con ayuda de la descompocision y veremos las condiciones para que esta estructura este bien definida y sea completa, sin olvidarnos de hacer ejemplos al respecto y finalizaremos con un comentario acerca del camino que queda para entender los nudos hiperbólicos por medio de invariantes geométricos y la conjetura del volumen.
     \section{Preliminares}
     \subsection{Teoría de Nudos}
+    \input{Nudos.tex}
     \subsection{Geometría Hiperbólica}
-
+    \input{GeoHip.tex}
+    \section{Descomposición del complemento de un nudo/enlace}
+    En el mismo espíritu de la bibliografía presentaremos la construcción principal por medio del ejemplo estrella, para posteriormente verla en otro casos. El propósito es presentar una construcción geométrica que nos permita de manera local, entender como se descompone la 3-variedad $S^3\setminus K$ en bloques 3-dimensionales mucho mas sencillos, para así poder pasar entre diagramas de nudos/enlaces a complementos de nudos/enlaces.
+    \subsection{Descomposición del nudo de 8}
+    \input{Construc.tex}
+    \section{Estructura Hiperbolica del complemento de un nudo}
+    Finalmente hemos llegado la parte donde con ayuda de las descomposiciones obtenidas podemos dotar a nuestras estructura, en un principio, netamente topológicas, de una estructura geométrica, en nuestro caso hiperbólica, naturalmente surge la duda de si esto se puede hacer para cualquier complemento de nudo y de que forma lo haremos, ademas nos interesa saber si la métrica inducida es completa, a continuación presentaremos una forma de hacerlo, mas se puede dar condiciones mas generales incluso especificar en el caso de la estructura hiperbólica dos dimensional. Similar a la sección anterior iremos haciendo nuestro ejemplo característico y algún otro posterior a introducir las condiciones
+    \subsection{Ecuaciones de Pegado}
+    \input{estruc}
+    \section{La conjetura del volumen}
+    Hemos visto una forma de dotar a complementos de un nudo de una estructura hiperbólica completa, al igual que en los preliminares hallamos distancias y áreas dada la métrica hiperbólica, si dotamos a una 3-variedad de esta, de manera local en coordenadas la métrica es la hiperbólica por lo que podríamos calcular el volumen de esas regiones y por tanto el volumen de complementos de nudos
+    \begin{definition}
+        Dado un nudo $K\subset S^3$, definimos el volumen hiperbolico como
+        $$Vol(K):=Vol(S^3\setminus K)$$
+    \end{definition}
+    Resulta que en la métrica hiperbólica el volumen de estas tres variedades siempre es finita, por lo que en un principio resultaría superflua la condición de completez de la métrica, pero el siguiente teorema de Mostow nos dice el por que es necesaria
+    \begin{theorem}
+        Suponga que $M$ es una 3 variedad con volumen finito, si $M$ posee una estructura hiperbólica completa, entonces esta estructura es única en $M$ salvo isometrias.
+    \end{theorem}
+    Este teorema nos asegura que la estructura hiperbólica completa en el complemento de un nudo es única salvo isometria y por tanto es un invariante de nudos, y por tanto todo aquello que calculemos de esa 3-variedad, como por el ejemplo el volumen, también sera un invariante. Hasta la fecha la mayoría de volúmenes hiperbólicos son hallados de manera computacional y por medio de cotas superiores e inferiores, mas no hay formula cerrada salvo casos contados como el nudo de $8$. Aproximaciones de algunos de estos los podemos visualizar en la siguiente tabla.
+    \begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Nudo} & \textbf{Volumen hiperbólico} \\
+\hline
+$4_1$  & $2.02988$ \\
+\hline
+$5_2$  & $2.82812$ \\
+\hline
+$6_1$  & $3.16396$ \\
+\hline
+$6_2$   & $3.16396$ \\
+\hline
+$6_3$   & $5.69302$ \\
+\hline
+$7_2$   & $3.33174$ \\
+\hline
+$7_3$   & $4.59296$ \\
+\hline
+$7_4$   & $5.13794$ \\
+\hline
+$7_5$  & $5.33349$ \\
+\hline
+$7_6$   & $6.44353$ \\
+\hline
+$7_7$   & $6.89032$ \\
+\hline
+\end{tabular}
+\caption{Volúmenes hiperbólicos de algunos nudos hiperbólicos.}
+\end{table}
+    Seria genial poder encontrar una formula cerrada para el volumen de cualquier nudo, mas esto es un problema abierto aun que se conoce como la conjetura del volumen, la cual nos dice que el volumen esta dado por la siguiente formula
+    $$Vol(K)=\lim_{N\to\infty}\frac{2\pi\log|J_N(K;e^{\frac{\pi i}{N}})|}{N},$$
+    Donde $J_N(K;e^{\frac{\pi i}{N}})$ es el $N-$esimo polinomio de Jones coloreado evaluado en $e^{\frac{\pi i}{N}}$. el cual es la generalización del polinomio de Jones clásico dada por los invariantes de Reshetikhin–Turaev.
 \begin{thebibliography}{9}
 
 \input{ref}

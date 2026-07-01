@@ -29,13 +29,13 @@
     numbered=no,
     qed=\sqed
 ]{thmproofbox}
-
+\declaretheorem[style=thmbox,name=Paso]{block}
 \declaretheorem[numberwithin=section,style=thmbox, name=Definición]{definition}
-\declaretheorem[sibling=definition,style=standar, numbered=yes, name=Ejemplo]{eg}
-\declaretheorem[sibling=definition,style=thmbox, name=Proposición]{prop}
-\declaretheorem[sibling=definition,style=thmbox, name=Teorema, numbered=yes]{theorem}
-\declaretheorem[sibling=definition,style=thmbox, name=Lema]{lemma}
-\declaretheorem[sibling=definition,style=thmbox, name=Corolario]{corollary}
+\declaretheorem[numberwithin=section,style=thmproofbox, numbered=yes, name=Ejemplo]{eg}
+\declaretheorem[numberwithin=section,style=thmbox, name=Proposición]{prop}
+\declaretheorem[numberwithin=section,style=thmbox, name=Teorema, numbered=yes]{theorem}
+\declaretheorem[numberwithin=section,style=thmbox, name=Lema]{lemma}
+\declaretheorem[numberwithin=section,style=thmbox, name=Corolario]{corollary}
 
 \declaretheorem[style=thmproofbox, name=Demostración]{replacementproof}
 \renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}

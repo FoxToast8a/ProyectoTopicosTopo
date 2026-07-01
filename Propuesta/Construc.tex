@@ -1,0 +1,153 @@
+%!TEX root = ./main.tex
+
+
+
+\begin{definition}
+    Un poliedro es una 3-bola cerrada, tal que en su frontera se encuentre marcada con un grafo finito, tal que la regiones complementarias llamadas caras son simplemente conexas.
+\end{definition}
+Prácticamente cualquier dibujo clásico que se puede hacer (de manera natural sin estar buscando no ejemplos) resulta ser un ejemplo de poliedro
+\begin{figure}[H]
+    \centering
+    \input{Grafoconex}
+    \caption{Ejemplo de poliedro}
+\end{figure}
+La condición final esta puesta para asegurar que las caras si se comporten como discos poligonales para tener un análogo de la imagen usual que uno suele tener de poliedro, mas si no la tuviéramos podemos hacer uno de esos dibujos que mencionábamos antes.
+\begin{figure}[H]
+    \centering
+    \input{GrafoDisconex}
+    \caption{Grafo que genera una región que no es simplemente conexa}
+\end{figure}
+Como nuestro propósito es estudiar los complementos de los nudos en $S^3$ si lo pensamos bien la información que nos da el nudo es aquello que falta, es decir son huecos en la descomposición, esto motiva la siguiente definición. 
+\begin{definition}
+    Un poliedro ideal es un poliedro en el cual removemos todos los puntos que antes habíamos marcado como vértices.
+\end{definition}
+
+Nuestra idea sera cortar $S^3\setminus K$ en dos poliedros ideales, así tendríamos  una descripción del complemento como el pegado de dos estructuras mucho mas sencillas de comprender (en particular de visualizar).\\
+
+Una primera intuición geométrica que nos da la construcción es la siguiente, Consideremos el siguiente diagrama del nudo de 8
+\begin{figure}[H]
+    \centering
+    \input{Proy8}
+    \caption{Proyección del nudo de 8}
+\end{figure}
+La idea subyacente sera considerar el diagrama en un plano proyección con cierto volumen, para que de esta forma si bien sea prácticamente una proyección en términos de visualización en realidad sea el mismo nudo original embebido en $S^2\times[-\varepsilon,\varepsilon]$, para $\varepsilon>0$, tal que todo eso este contenido en $S^3$, una ilustración que describe eso es la siguiente
+\begin{figure}[H]
+    \centering
+    \input{Globos8}
+    \caption{Dos 3 bolas inflándose hasta chocar con el nudo}
+\end{figure}
+Los globos que se encuentran sobre y debajo del plano representaran las 3-bolas que identificaremos para que por medio de la función de pegado codifiquen $S^3\setminus K$. La idea sera inflar estas hasta que se encuentren las fronteras de ambas, la pregunta que surge es estas donde se encontraran y de que manera se producirá la identificación. Observemos que en una región local del diagrama donde no halla un cruce al expandirse los globos estos se verán de la siguiente manera
+\begin{figure}[H]
+    \centering
+    \input{unacuerda}
+    \caption{Vista local alrededor de una vecindad tubular}
+\end{figure}
+Al ver esto nos podemos dar una idea de cuales serán las caras de nuestro poliedro para la identificación, precisamente serán las regiones que delimita el diagrama del nudo, así ya tenemos la primera parte identificada, las caras de nuestro poliedro ideal serán las regiones que delimita del diagrama del nudo.\\
+
+La segunda parte que ya tenemos determinada son los vértices ideales del poliedro ya que como mencionamos antes la única información que no esta en nuestra 3-variedad es el nudo en si, entonces los vértices ideales serán las cuerdas del diagrama, mas cuando entremos en detalle del algoritmo veremos como funciona eso.\\
+
+Lo ultimo que nos falta es determinar cuales serán las aristas que rodearan las caras ya determinadas, esto lo podemos ver con la única parte del diagrama del nudo a la cual no hemos prestado tanta atención, la zona de los cruces, para esto presentamos la siguiente ilustracion para dar una intuición de lo que ocurre en esas regiones al inflar los globos.
+\begin{figure}[H]
+    \centering
+    \input{doscuerdas}
+    \caption{Dibujo local como segmentos}
+\end{figure}
+Claramente estas intersecciones están des-suavizadas por propósitos prácticos, pero observe como en la región que se genera entre las cuerdas es una región donde se diferencian tanto las caras del globo de arriba como las de abajo por lo que a cada cruce del diagrama se dotara de una arista con una orientación. Con toda esta información ya podemos plantear un paso a paso completamente basado en el diagrama del nudo (combinatorio) para hacer la descomposición posterior en los dos poliedros.
+
+\begin{block}
+Dado un diagrama de un nudo $K$. Este divide el plano en múltiples regiones, designe cada una de estas por algún identificador. Posterior a esto en cada cruce que encuentre en el diagrama dibujaremos aristas (segmentos de recta con orientación) como se muestra a continuación
+\begin{figure}[H]
+    \centering
+    \input{localar}
+    \caption{Arista en un cruce}
+\end{figure}
+\end{block}
+Algunas observaciones antes de ver como se visualiza esto en el nudo de $8$, recordemos que antes había dicho que por cada cruce en el nudo surgía una arista mas en la ilustración anterior se dibujaron 4, en primer lugar observe que las cuatro tienen toda la misma orientación (ya sea desde la cuerda que pasa por abajo hacia la de arriba o viceversa) esto se debe a que estas aristas son isotopicas en $S^3$, esto se consigue deslizando tanto la cola o la cabeza de cada flecha a través de la cuerda, luego el motivo de dibujarlas las 4 es para determinar desde un principio cuales son las aristas que rodean cada región y convierten en una cara. Con esto en mente veamos en la proyección del nudo de $8$ como se ve este primer paso
+\begin{figure}[H]
+
+\input{Paso1-8}
+
+\caption{Paso 1 del algoritmo para el nudo de 8}
+
+\end{figure}
+Observe que por ejemplo la cara identificada por $A$ las aristas que la rodean son la $0,1$ y $2$. lo cual en la ilustración con solo $1$ arista por cruce es bastante difícil de ver
+\begin{block}
+    Contraiga cada cuerda que sea un cruce superior a un punto, este punto sera el vértice ideal de nuestro poliedro superior, dado por la esfera de arriba.
+\end{block}
+
+Una observación relevante es que contraer estas cuerdas a un punto es posible ya que el complemento de un punto en $S^2$ es homeomorfo al complemento de un segmento de recta en $S^2$, esto se puede mostrar fácilmente con ayuda de la proyección estereográfica, la otra observación que es netamente de visualización es que estamos viendo el grafo desde dentro de la bola superior, esto lo haremos con un paso intermedio que se puede ver en el siguiente diagrama
+\begin{figure}[H]
+    \centering
+    \input{Paso2-8}
+    \caption{Paso intermedio y paso 2 para el nudo de 8}
+\end{figure}
+\begin{block}
+    De manera similar a antes contraiga ahora cada cruce por debajo como si fuera una cuerda continua a un punto, estos serán los vértices ideales del poliedro inferior, dado por la esfera de abajo.
+\end{block}
+Observe que para el poliedro de abajo lo que para nosotros desde el diagrama es una cuerda que pasa por debajo, para este sera una cuerda que pasa por encima, por eso ahora contraemos los cruces así
+\begin{figure}[H]
+    \centering
+    \input{Paso3-8}
+    \caption{Paso intermedio y paso 3 para el nudo de 8}
+\end{figure}
+En este caso vemos la esfera desde afuera por arriba como es la visualización natural de un poliedro desde la parte exterior.\\
+
+De esta forma obtenemos la descompocision en dos poliedros ideales bajo nuestra definición del mismo. Es fácil notar que la asignación de caras y aristas de pegado que nos muestran ambos diagramas recuperan el complemento del nudo inicial, simplemente coloque la cara $A$ de uno sobre la otra y pegue ambas asegurándose que las aristas coincidan y lo mismo para las demás, por la construcción misma el pegado da el diagrama obtenido en el primer paso, salvo que en vez de tener dibujadas las 4 aristas isotopicas solo hay una.
+
+\begin{note}
+    En general en un poliedro usual con una definición de formas clásicas evitaríamos caras como la $E$ y $F$ donde solo hay dos lados, ya que lo usual es que nuestras caras básicas sean triángulos, para obtener algo como esto observe que por ejemplo en el diagrama del paso 1 si uno en la cara $F$ desliza la arista 2 a través de la región puede llegar de manera isotopica a la arista 3.
+    \begin{figure}[H]
+    \centering
+    \input{IsoF}
+        \caption{Isotopia de la Region F}
+    \end{figure}
+    En general en regiones así siempre las aristas entre cruces serán isotopicas, luego basta con tener una para tener toda la información, por lo que estas regiones pueden colapsarse en los diagramas finales a solo una arista y eliminar la cara completamente obteniendo la presentación dada por Thurston original, dos tetraedros, en este caso aplanados y uno visto desde adentro, donde la arista 0 se identifica con la 1 y la arista 2 con la 3, note ademas que cambiamos la numeración por lineas en las aristas, esto sera útil luego para no sobrecargar el dibujo.
+    \begin{figure}[H]
+    \centering
+    \input{tetra8}
+       \caption{Tetraedros del nudo de 8 luego de contraer las regiones E y F.} 
+    \end{figure}
+\end{note}
+\subsection{Otros ejemplos de descompocision y una vista a la generalización}
+El proceso realizado antes funciona muy bien tanto para enlaces como para nudos, para mostrar esto haremos uno de cada uno
+\begin{eg}
+    Considere la proyección del enlace de Whitehead estándar con regiones y aristas ya identificadas
+    \begin{figure}[H]
+    \centering
+    \input{whitehead}
+        \caption{enlace de Whitehead}
+    \end{figure}
+    Siguiendo los pasos indicados antes obtenemos los siguientes diagramas que nos dan ambos poliedros, el de arriba visto desde adentro y el de abajo visto desde afuera.
+    \begin{figure}[H]
+    \centering
+    \input{whiteheadpoli}
+        \caption{Descompocision del complemento del enlace}
+    \end{figure}
+    Observe que en ambos poliedros las regiones $E$ y $F$ solo poseen dos lados, en el caso de $E$ son $0$ y $1$ con orientaciones opuestas, mientras que en $F$ son $3$ y $4$ con orientaciones opuestas también, basta con recordar eso al momento de eliminar esas caras observe que la cara exterior posee 4 lados y es la única que es de este estilo, por lo que si identificamos esta obtenemos un octaedro ideal que fue justamente la descripción que se da en las notas de Thurston, aquí hacemos el dibujo plano que es mas general
+    \begin{figure}[H]
+     \centering
+    \input{whiteheadpolifin}
+        \caption{dos pirámides ideales del enlace de Whitehead}
+    \end{figure}
+\end{eg}
+\begin{eg}
+    Considere la siguiente proyeccion del nudo $6_1$ que no es precisamente la estandar mas tiene un parecido con la proyeccion del nudo de 8 y por eso la tomamos
+    \begin{figure}[H]
+    \centering
+    \input{nudo61}
+        \caption{Nudo $6_1$}
+    \end{figure}
+   Nuevamente por los pasos de antes obtenemos los siguientes diagramas que nos dan ambos poliedros, el de arriba visto desde adentro y el de abajo visto desde afuera.
+    \begin{figure}[H]
+    \input{nudo61poli}
+        \caption{Descompocision del complemento del nudo $6_1$}
+    \end{figure}
+    Observe que podemos eliminar las caras $E,F,G$ y $H$ ya que solo tienen dos lados, así si identificamos adecuadamente obtenemos los siguientes dos poliedros que son muy similares a los tetraedros salvo por las caras $C$ y $D$.
+    \begin{figure}[H]
+    \centering
+    \input{nudo61polifin}
+        \caption{Descompocision reduciendo las caras de dos aristas}
+    \end{figure}
+    
+\end{eg}
+Observe que particularmente este proceso es primero bastante mas fácil de realizar de lo que en un principio se podría pensar, pero ademas de esto, nos da una descompocision relativamente sencilla que nos permite visualizar la tres variedad, y no solo eso, nos da indicios de un análogo de la descomposición de dos variedades por medio de triangulaciones. Un comentario extra es que esta construcción también funciona en nudos y enlaces alternantes salvo que hay que hacer simplificaciones similares a la reducción de caras donde solo hay dos lados.
